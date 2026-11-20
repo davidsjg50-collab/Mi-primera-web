@@ -1,0 +1,45 @@
+
+/**body {
+    margin: 15px;
+    padding: 15px;
+    font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}**/
+
+body {
+    max-width: 900px; /* Limita el ancho*/
+    margin: 0 auto;   /* Centra */
+    font-family: Segoe UI;
+    padding: 20px;    /* Añade un poco de espacio interior para que no pegue a los bordes */
+    color:rgb(8, 8, 61) /* Color de texto global */
+}
+
+header {
+   border-bottom: 4px solid rgb(142, 223, 67);
+   padding: 0px;    
+   color:rgb(85, 85, 90)
+ }
+
+ h1 {
+    color:rgb(8, 8, 61);
+}
+
+a {
+    color:rgb(47, 167, 189)
+}
+
+nav {
+    background-color:rgb(190, 216, 231);
+    padding: 5px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+img {
+    border-radius: 15px;
+}
+
+footer {
+    border-top: 1px solid rgb(148, 148, 150);
+    padding: 10px;
+    color:rgb(85, 85, 90)
+}
