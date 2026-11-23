@@ -1,45 +1,448 @@
+/*
+  PARTE 2 - FREESTYLE
 
-/**body {
-    margin: 15px;
-    padding: 15px;
-    font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-}**/
+  Estilo buscado: neobrutalismo con aire de carrera de karts. Bordes negros
+  gruesos, sombras duras sin difuminar, colores planos (el naranja y el
+  amarillo de Tux sobre azul hielo) y una meta a cuadros en la cabecera.
 
-body {
-    max-width: 900px; /* Limita el ancho*/
-    margin: 0 auto;   /* Centra */
-    font-family: Segoe UI;
-    padding: 20px;    /* Añade un poco de espacio interior para que no pegue a los bordes */
-    color:rgb(8, 8, 61) /* Color de texto global */
+  Uso de IA: si. Usé Claude. Le pedí que mejorase la hoja de la parte 1 sin
+  tocar el HTML, con un estilo reconocible, texto legible y que se vea bien
+  en móvil a 375 px.
+*/
+
+:root {
+  --tinta: #101828;
+  --papel: #ffffff;
+  --hielo: #d9eefc;
+  --naranja: #ff8a1f;
+  --amarillo: #ffd23f;
+  --enlace: #0a4fb3;
+  --borde: 3px solid var(--tinta);
+  --sombra: 6px 6px 0 var(--tinta);
+  --titulos: "Arial Black", "Segoe UI Black", Impact, "Segoe UI", sans-serif;
 }
 
-header {
-   border-bottom: 4px solid rgb(142, 223, 67);
-   padding: 0px;    
-   color:rgb(85, 85, 90)
- }
+* {
+  box-sizing: border-box;
+}
 
- h1 {
-    color:rgb(8, 8, 61);
+html {
+  background-color: var(--hielo);
+  background-image: radial-gradient(rgba(16, 24, 40, 0.14) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 32px;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--tinta);
+}
+
+/* ---------- Enlace para saltar al contenido ---------- */
+
+.saltar {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  z-index: 20;
+  padding: 10px 16px;
+  background: var(--amarillo);
+  border: var(--borde);
+  color: var(--tinta);
+  font-weight: 800;
+}
+
+.saltar:focus {
+  left: 16px;
+}
+
+/* ---------- Cabecera con meta a cuadros ---------- */
+
+header {
+  --hp: 24px;
+  padding: var(--hp);
+  margin-bottom: 24px;
+  background: var(--naranja);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+}
+
+header::after {
+  content: "";
+  display: block;
+  height: 35px;
+  margin: var(--hp) calc(var(--hp) * -1) calc(var(--hp) * -1);
+  border-top: var(--borde);
+  background: conic-gradient(var(--tinta) 25%, #fff 0 50%, var(--tinta) 0 75%, #fff 0) 0 0 / 32px 32px;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--titulos);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 10vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--tinta);
+}
+
+header p {
+  margin: 10px 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+/* ---------- Navegación ---------- */
+
+nav {
+  margin-bottom: 24px;
+  padding: 10px;
+  background: var(--papel);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  display: block;
+  padding: 8px 14px;
+  background: var(--hielo);
+  border: var(--borde);
+  color: var(--tinta);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: var(--amarillo);
+}
+
+/* ---------- Paneles de contenido ---------- */
+
+main,
+aside {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: var(--papel);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+}
+
+main > h2:first-child,
+aside > h2:first-child {
+  margin-top: 0;
+}
+
+h2 {
+  margin: 2rem 0 1rem;
+  padding-bottom: 8px;
+  border-bottom: var(--borde);
+  font-family: var(--titulos);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  line-height: 1.15;
+  scroll-margin-top: 90px;
+}
+
+h3 {
+  margin: 2rem 0 0.75rem;
+  padding-left: 12px;
+  border-left: 10px solid var(--naranja);
+  font-family: var(--titulos);
+  font-weight: 900;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  scroll-margin-top: 90px;
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 70ch;
+}
+
+ul,
+ol {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+}
+
+li {
+  margin: 0.35rem 0;
+}
+
+li::marker {
+  color: var(--naranja);
+  font-weight: 900;
+}
+
+ol li::marker {
+  color: var(--tinta);
 }
 
 a {
-    color:rgb(47, 167, 189)
+  color: var(--enlace);
+  font-weight: 600;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
-nav {
-    background-color:rgb(190, 216, 231);
-    padding: 5px;
-    margin: 10px;
-    border-radius: 15px;
+a:hover {
+  background: var(--amarillo);
+  color: var(--tinta);
 }
 
-img {
-    border-radius: 15px;
+a:focus-visible,
+button:focus-visible,
+textarea:focus-visible {
+  outline: 4px solid var(--enlace);
+  outline-offset: 3px;
 }
+
+/* ---------- Tabla ---------- */
+
+table {
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  border-collapse: collapse;
+  border: var(--borde);
+  background: var(--papel);
+}
+
+caption {
+  caption-side: top;
+  padding-bottom: 8px;
+  text-align: left;
+  font-weight: 700;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  border: var(--borde);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  width: 42%;
+  background: var(--amarillo);
+}
+
+/* ---------- Formulario ---------- */
+
+.notas {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 0;
+  border: 0;
+}
+
+.notas legend {
+  margin-bottom: 8px;
+  padding: 0;
+  font-weight: 700;
+}
+
+.escala {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.escala label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  background: var(--papel);
+  border: var(--borde);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.escala input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.escala label:hover {
+  background: var(--amarillo);
+}
+
+.escala label:has(input:checked) {
+  background: var(--naranja);
+  box-shadow: 3px 3px 0 var(--tinta);
+}
+
+.escala label:has(input:focus-visible) {
+  outline: 4px solid var(--enlace);
+  outline-offset: 2px;
+}
+
+label[for="comentario"] {
+  font-weight: 700;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 4px;
+  padding: 10px;
+  background: var(--papel);
+  border: var(--borde);
+  border-radius: 0;
+  color: var(--tinta);
+  font: inherit;
+  resize: vertical;
+}
+
+button {
+  padding: 12px 24px;
+  background: var(--naranja);
+  border: var(--borde);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--tinta);
+  color: var(--tinta);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--tinta);
+}
+
+button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--tinta);
+}
+
+/* ---------- Galería ---------- */
+
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+figure {
+  position: relative;
+  margin: 0;
+  background: var(--papel);
+  border: var(--borde);
+  box-shadow: 5px 5px 0 var(--tinta);
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--hielo);
+  border-bottom: var(--borde);
+  border-radius: 0;
+}
+
+figcaption {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.etiqueta {
+  position: absolute;
+  top: 12px;
+  left: -8px;
+  z-index: 1;
+  padding: 2px 12px;
+  background: var(--amarillo);
+  border: var(--borde);
+  font-weight: 800;
+  transform: rotate(-3deg);
+}
+
+/* ---------- Pie ---------- */
 
 footer {
-    border-top: 1px solid rgb(148, 148, 150);
-    padding: 10px;
-    color:rgb(85, 85, 90)
+  padding: 14px 18px;
+  background: var(--tinta);
+  box-shadow: 6px 6px 0 var(--naranja);
+  color: #fff;
+}
+
+footer p {
+  margin: 0;
+  max-width: none;
+}
+
+/* ---------- Adaptación ---------- */
+
+@media (min-width: 640px) {
+  nav {
+    position: sticky;
+    top: 12px;
+    z-index: 10;
+  }
+
+  .escala {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galeria .destacada {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    --hp: 16px;
+  }
+
+  main,
+  aside {
+    padding: 16px;
+    box-shadow: 4px 4px 0 var(--tinta);
+  }
+
+  th {
+    width: 38%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  button {
+    transition: none;
+  }
 }
